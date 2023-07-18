@@ -1,4 +1,5 @@
 <template>
+  <auth-layout>
   <div class="flex flex-col space-y-5 mx-auto py-8 max-w-xl w-3/5"> 
     <div class="space-y-2 text-green-500"> 
       <div class="-ml-8 flex items-center space-x-2"> 
@@ -104,6 +105,7 @@
       </form> -->
     </div>
   </div>
+  </auth-layout>
 </template>
 
 <script lang="ts">  

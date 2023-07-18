@@ -1,4 +1,5 @@
 <template>
+  <subpage-layout>
   <div class="container mx-auto grid grid-cols-3 gap-6 px-2 relative"> 
     <!-- right side  -->
     <section class="col-span-1 h-fit pb-5  pt-5 sticky top-[5rem]">
@@ -157,6 +158,7 @@
     <div class="h-[100px]"></div>
       </section> 
   </div>
+  </subpage-layout>
 </template>
 
 <script lang="ts">  

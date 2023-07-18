@@ -1,4 +1,5 @@
 <template>
+  <milestone-dashboard-layout>
   <div>  
     <!-- Project info  -->
     <div class="grid grid-cols-3 gap-x-6 mx-auto relative">
@@ -129,6 +130,7 @@
 
     <div class="h-[100px]"></div>
   </div>
+  </milestone-dashboard-layout>
 </template>
  
 <script lang="ts"> 
@@ -286,6 +288,6 @@ export default defineComponent({
     return {exhibitions,uploadForm,payload,images,requirements,showProjectDetailsModal,project, router};
   },
 });
-// definePageMeta({ layout: "milestone-dashboard" }); 
+// definePageMeta({ layout: "milestone-milestone-dashboard" }); 
 
 </script>

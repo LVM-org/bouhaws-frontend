@@ -1,4 +1,5 @@
 <template>
+  <subpage-layout>
   <div>   
     <section class="col-span-3 space-y-14 flex flex-col relative  w-full">
       <div class=" box-shadow flex-1 space-y-2 bg-white  !text-[#0E1011] rounded-[10px]  px-8 py-6 ">  
@@ -53,6 +54,7 @@
     
     <div class="h-[100px]"></div>
   </div>
+  </subpage-layout>
 </template>
 
 <script lang="ts">  

@@ -1,4 +1,5 @@
 <template>
+  <dashboard-layout>
   <section class="col-span-3 flex flex-col space-y-3 relative">
     <div class="flex flex-row justify-between items-center sticky top-0">
       <Tabs
@@ -27,6 +28,7 @@
   </section>
   
   <div class="h-[100px]"></div>
+  </dashboard-layout>
 </template>
 
 <script lang="ts"> 

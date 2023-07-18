@@ -1,4 +1,6 @@
-<template> <div class="grid grid-cols-3 gap-x-6 relative">
+<template> 
+  <dashboard-layout>
+<div class="grid grid-cols-3 gap-x-6 relative">
     <!-- main content --> 
     <section class="col-span-2 relative top-0  sticky overflow-scroll  no-scrollbar top-0 col-span-2 space-y-5">
       <!--  -->
@@ -123,6 +125,7 @@
       <PartialsLeaderboard /> 
     </section>
   </div>
+  </dashboard-layout>
 </template>
 
 <script lang="ts"> 

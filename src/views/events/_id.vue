@@ -1,4 +1,5 @@
 <template>
+<milestone-dashboard-layout>
   <div>
     <!-- Modals here -->
     <!-- <Modal
@@ -244,6 +245,7 @@
       </section>
     </div>
   </div>
+</milestone-dashboard-layout>
 </template>
 
 <script lang="ts">

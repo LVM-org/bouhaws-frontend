@@ -1,4 +1,5 @@
 <template> 
+<subpage-layout>
   <div>
   <section class="w-full flex flex-col space-y-5 relative">
     <div class="flex flex-row justify-between items-center sticky top-[6rem]">
@@ -83,6 +84,7 @@
    
     <div class="h-[100px]"></div>
   </div>
+</subpage-layout>
 </template>
 
 <script lang="ts"> 
@@ -226,116 +228,5 @@ export default defineComponent({
   },
 });
 
-// definePageMeta({ layout: "sub-page" });
-
-// const activeOption = ref("projects");
-// const filterOptions = reactive([
-//   { title: "projects" },
-//   { title: "members" },
-//   { title: "details" },
-// ]);
-
-// const projects = ref([
-//   {
-//     id: "1",
-//     title: `Project title`,
-//     type: "class",
-//     dataPosted: `Posted 2 hours ago`,
-//     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-//     milestones: {
-//       total: 5,
-//       current: 3,
-//     },
-//     deadline: `Deadline in 15 days`,
-//     user: {
-//       name: "Teacher",
-//       photo_url: "/images/avatar-2.png",
-//     },
-//     image_url: "/images/gallery-project-1.png",
-//     completed: true,
-//   },
-//   {
-//     id: "1",
-//     title: `Project title`,
-//     type: "class",
-//     dataPosted: `Posted 2 hours ago`,
-//     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-//     milestones: {
-//       total: 5,
-//       current: 3,
-//     },
-//     deadline: `Deadline in 15 days`,
-//     user: {
-//       name: "Brand",
-//       photo_url: "/images/avatar-5.png",
-//     },
-//     image_url: "/images/gallery-project-2.png",
-//     completed: true,
-//   },
-//   {
-//     id: "1",
-//     title: `Project title`,
-//     type: "class",
-//     dataPosted: `Posted 2 hours ago`,
-//     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-//     milestones: {
-//       total: 5,
-//       current: 3,
-//     },
-//     deadline: `Deadline in 15 days`,
-//     user: {
-//       name: "Teacher",
-//       photo_url: "/images/avatar-3.png",
-//     },
-//     image_url: "/images/gallery-project-3.png",
-//     completed: true,
-//   },
-//   {
-//     id: "1",
-//     title: `Project title`,
-//     type: "class",
-//     dataPosted: `Posted 2 hours ago`,
-//     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-//     milestones: {
-//       total: 5,
-//       current: 3,
-//     },
-//     deadline: `Deadline in 15 days`,
-//     user: {
-//       name: "Brand",
-//       photo_url: "/images/avatar-4.png",
-//     },
-//     image_url: "/images/event-gallery.png",
-//     completed: true,
-//   },
-// ]);
-
-// const members = reactive([
-//   {
-//     name: "Teacher Name",
-//     photo_url: "/images/avatar-3.png",
-//     is_teacher: true,
-//   },
-//   {
-//     name: "DanielaM",
-//     photo_url: "/images/avatar-1.png",
-//     is_teacher: false,
-//   },
-//   {
-//     name: "Robert Lewandowski",
-//     photo_url: "/images/avatar-2.png",
-//     is_teacher: false,
-//   },
-//   {
-//     name: "Sheva_111",
-//     photo_url: "/images/avatar-4.png",
-//     is_teacher: false,
-//   },
-//   {
-//     name: "DonatellaO",
-//     photo_url: "/images/avatar-5.png",
-//     is_teacher: false,
-//   },
-// ]);
-
+// definePageMeta({ layout: "sub-page" }); 
 </script>

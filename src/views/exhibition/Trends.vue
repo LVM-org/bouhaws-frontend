@@ -1,4 +1,5 @@
 <template>
+  <dashboard-layout>
   <div class="container  py-5 px-2"> 
     <div class="flex flex-col items-center mb-6 justify-center p-6 space-y-5 rounded-2xl bg-bouhaws-blue-main">
       <h4 class="text-white text-3xl">
@@ -149,6 +150,7 @@
         </div>
       </template>  
   </div>
+  </dashboard-layout>
 </template>
 
 <script lang="ts"> 

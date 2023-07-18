@@ -2,7 +2,7 @@
   <div
     :class="`h-full  w-full space-y-2 flex flex-col lg:text-sm mdlg:text-[12px] text-xs`"
   >
-    <slot />
+    <slot /> 
     <div class="h-[120px] mdlg:!hidden"></div>
   </div>
 </template>

@@ -1,4 +1,5 @@
 <template>
+<challenges-layout>
   <section class="space-y-5"> 
     <div class="w-2/3 flex flex-col rounded-lg h-fit p-6 bg-white">
       <h4 class="text-2xl mb-2">Available courses</h4>
@@ -17,6 +18,7 @@
       </div>
     </div>
   </section>
+</challenges-layout>
 </template>
 
 <script lang="ts"> 
