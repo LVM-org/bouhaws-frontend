@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-    font-family: Lexend;
+  @apply text-bouhaws-semi-dark;
+  font-family: Lexend;
 }
 
 .custom-border {

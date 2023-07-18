@@ -1,8 +1,8 @@
 <template>
   <dashboard-layout>
-    <div class="py-5">Hello world</div>
+    <div class="py-5 text-green-500">Hello wewdfdfd ew world</div>
   </dashboard-layout>
-</template>
+</template>  
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "vue";

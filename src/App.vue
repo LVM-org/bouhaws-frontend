@@ -1,11 +1,13 @@
 <template>
   <metainfo>
     <template #title="{ content }">{{
-      content ? `${content} | App Name` : `App Name`
+      content ? `${content} | Bouhaws` : `Bouhaws`
     }}</template>
   </metainfo>
   <router-view />
-</template>
+</template> 
+
+
 <script lang="ts">
 import { useMeta } from "vue-meta";
 import { defineComponent, onMounted, ref } from "vue";
@@ -22,6 +24,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style>
 body,
 html {

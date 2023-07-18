@@ -3,10 +3,12 @@ import App from './App.vue'
 import { createRouter, createWebHistory, useRoute, useRouter } from 'vue-router'
 import routes from './router/routes'
 import { createMetaManager } from 'vue-meta'
-// import { Logic } from 'app-logic'
-// import { SetFrontendLogic } from 'app-ui-components'
-
+// import { Logic } from 'app-logic' 
 import DashboardLayout from './layouts/Dashboard.vue'
+import DefaultLayout from './layouts/Default.vue'
+import MilestoneDashboardLayout from './layouts/MilestoneDashboard.vue'
+import AuthLayout from './layouts/Auth.vue'
+import SubPageLayout from './layouts/SubPage.vue'
 
 // UI component css style
 // import 'sofa-ui-components/dist/library.min.css'
@@ -67,6 +69,10 @@ const init = async () => {
     },
   })
     .component('dashboard-layout', DashboardLayout)
+    .component('default-layout', DefaultLayout)
+    .component('milestone-dashboard-layout', MilestoneDashboardLayout)
+    .component('auth-layout', AuthLayout)
+    .component('subpage-layout', SubPageLayout)
     .use(await router)
     .use(store, key)
     .use(createMetaManager())

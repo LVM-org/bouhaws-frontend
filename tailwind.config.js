@@ -4,27 +4,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryPurple: "#3219AF",
-        primaryBlue: "#197DFA",
-        primaryOrange: "#FA9632",
-        primaryGreen: "#4BAF7D",
-        primaryRed: "#E1324B",
-        primaryPurplePink: "#AF19C8",
-        primaryPink: "#FF4BC8",
-        bodyBlack: "#413C46",
-        ligthGray: "#F1F6FB",
-        grayColor: "#78828C",
-        backgroundGray: "#f1f6fb",
-        fadedPurple: "#EFF4F9",
-        deepGray: "#141618",
-        lightBorderColor: "#E1E6EB",
-        skyBlue: "#E6F5FF",
-        lightGrayVaraint: "#F1F6FA",
+        "bouhaws-dark": "#111111",
+        "bouhaws-semi-dark": "#202128",
+        "bouhaws-blue-main": "#336DFF",
+        "bouhaws-light": "#D9D9D9",
+        "bouhaws-blue-dark": "#265EEC",
+        "bouhaws-green": "#27BA9E",
+        "bouhaws-light-green": "#AEF4E9",
+        "bouhaws-purple": "#9747FF",
+        "bouhaws-gray": "#5A5B5B",
+        "bouhaws-light-gray": "#9E9E9E",
+        "bouhaws-light-gray-2": "#6F6F74",
+        "bouhaws-text-black": "#1C1C1E",
+        "progress-bar-gray": "#61656D",
+        "bouhaws-orange": "#FF9900",
       },
-      boxShadow: {
-        custom: "0px 4px 4px rgba(8, 0, 24, 0.05)",
-        itemBox: "0px 16px 12px rgba(130, 130, 140, 0.1)",
+
+      fontFamily: {
+        Kanit: ["Kanit", "sans-serif"],
       },
+    },
+    boxShadow: {
+      custom: "0px 10px 34px rgba(0, 0, 0, 0.15)",
     },
     screens: {
       sm: "640px",
@@ -36,7 +37,7 @@ module.exports = {
       mdlg: "1000px",
       // => @media (min-width: 768px) { ... }
 
-      lg: "1580px",
+      lg: "1600px",
       // => @media (min-width: 1024px) { ... }
 
       xl: "1280px",
@@ -44,7 +45,7 @@ module.exports = {
 
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
-    },
+    }, 
     fontSize: {
       xs: ".73rem",
       sm: ".85rem",
