@@ -1,4 +1,5 @@
 <template>
+<dashboard-layout>
   <router-link
     to="/classes/id"
     class="container grid grid-cols-3 gap-6 px-2 relative"
@@ -58,6 +59,7 @@
       <PartialsLeaderboard />
     </section>
   </router-link>
+</dashboard-layout>
 </template>
 
 <script lang="ts">

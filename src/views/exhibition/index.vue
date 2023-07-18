@@ -1,4 +1,5 @@
 <template> 
+<dashboard-layout>
   <div class="w-full flex flex-col space-y-5 relative">
     <div class="w-full flex flex-col space-y-3">
       <div
@@ -111,6 +112,7 @@
       </div>
     </div>
   </div>
+</dashboard-layout>
 </template>
 
 <script lang="ts"> 

@@ -1,4 +1,5 @@
 <template>
+<milestone-dashboard-layout>
   <div class="mx-auto relative flex flex-col"> 
     <div class="flex justify-end absolute right-0 -top-12 pb-4">
       <Button
@@ -173,6 +174,7 @@
       </section>
     </div>
   </div>
+</milestone-dashboard-layout>
 </template>
 
 <script lang="ts"> 

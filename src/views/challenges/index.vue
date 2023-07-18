@@ -1,4 +1,5 @@
 <template>
+<subpage-layout>
   <div class="w-full flex flex-col space-y-5 relative">
     <div
       class="w-full flex flex-col py-4 sticky lg:!top-[9%] mdlg:!top-[10%] items-center justify-center z-30"
@@ -29,6 +30,7 @@
 
     <div class="h-[100px]"></div>
   </div> 
+</subpage-layout>
 </template> 
 
 <script lang="ts"> 

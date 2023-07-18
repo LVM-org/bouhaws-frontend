@@ -1,4 +1,5 @@
 <template>
+  <subpage-layout>
   <div class="container mx-auto grid grid-cols-3 gap-6 px-2 relative">
     <!-- main content -->
     <section class="col-span-2 space-y-5  pt-6 sticky top-[5rem]"> 
@@ -160,6 +161,7 @@
       </div>
     </section> 
   </div>
+  </subpage-layout>
 </template>
 
 <script lang="ts">  

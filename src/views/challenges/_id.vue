@@ -1,4 +1,6 @@
 <template>
+
+  <milestone-dashboard-layout>
   <div> 
     <!-- Modals here -->
     <Modal
@@ -182,6 +184,7 @@
     </div>
     <div class="h-[100px]"></div>
   </div>
+  </milestone-dashboard-layout>
 </template>
 
 

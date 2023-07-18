@@ -1,4 +1,5 @@
 <template>
+  <subpage-layout>
   <section class="col-span-3 flex flex-col space-y-5 relative pt-5">
     <div class="flex flex-row justify-between items-center sticky top-[6rem]">
       <Tabs
@@ -91,6 +92,7 @@
   </section>
   
   <div class="h-[100px]"></div>
+  </subpage-layout>
 </template>
 
 <script lang="ts">  

@@ -1,4 +1,5 @@
 <template>
+<dashboard-layout>
   <div>  
     <div class="grid grid-cols-3 gap-6 py-5 px-2 w-4/6 mx-auto border">
       <section class="border w-full col-span-1 h-auto">
@@ -48,6 +49,7 @@
       </section>
     </div>
   </div>
+</dashboard-layout>
 </template>
 
 

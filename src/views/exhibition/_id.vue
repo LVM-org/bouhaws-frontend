@@ -1,4 +1,5 @@
 <template>
+<subpage-layout>
   <div class="flex flex-col space-y-6 pt-4"> 
     <div class="w-full flex flex-col relative"> 
       <span class="absolute left-0 top-1/2 z-50">
@@ -343,6 +344,7 @@
       <div class="h-[100px]"></div>
     </div>
   </div>
+</subpage-layout>
 </template> 
 
 <script lang="ts"> 

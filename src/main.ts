@@ -69,6 +69,7 @@ const init = async () => {
     },
   })
     .component('dashboard-layout', DashboardLayout)
+    .component('challenges-layout', DashboardLayout)
     .component('default-layout', DefaultLayout)
     .component('milestone-dashboard-layout', MilestoneDashboardLayout)
     .component('auth-layout', AuthLayout)

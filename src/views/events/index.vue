@@ -1,4 +1,5 @@
 <template>
+  <dashboard-layout>
   <section class="container gap-6 space-y-5"> 
     <div class="grid grid-cols-3 gap-x-4">
       <div
@@ -49,6 +50,7 @@
       </router-link>
     </div>
   </section>
+  </dashboard-layout>
 </template>
 
 <script lang="ts"> 

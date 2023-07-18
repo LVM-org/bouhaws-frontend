@@ -1,4 +1,5 @@
 <template>
+  <subpage-layout>
   <section class="w-full flex flex-col space-y-5 relative">
     <div class="flex flex-row justify-between items-center py-6 sticky top-[5rem]">
       <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
@@ -149,6 +150,7 @@
   </section>
   
   <div class="h-[100px]"></div>
+  </subpage-layout>
 </template>
 
 <script lang="ts">  
