@@ -1,19 +1,38 @@
 <template>
-  <div
+  <!-- <div
     :class="`h-full  w-full space-y-2 flex flex-col lg:text-sm mdlg:text-[12px] text-xs`"
   >
     <slot /> 
     <div class="h-[120px] mdlg:!hidden"></div>
+  </div> --> 
+  <div class="bg-[#E3E3D9] h-fit  relative font-Kanit w-full ">
+    <PartialsTopBar />
+  
+    <div class="relative top-5 py-[1rem]"> 
+      <div class="flex space-x-6 container  mx-auto max-h-[calc(100vh-12rem)]">
+        <div
+          class="rounded-[10px] py-8 !w-[25%] h-fit max-h-full"
+        >
+          <PartialsSideBar />
+        </div>
+
+        <div class="sticky overflow-scroll flex-1  max-h-[calc(100vh-4rem)] no-scrollbar"> 
+          <slot/>
+        </div>
+      </div>
+    </div>  
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from "vue";
 import { useRouter } from "vue-router";
+import PartialsSideBar from "@/components/Partials/SideBar.vue"
+import PartialsTopBar from "@/components/Partials/TopBar.vue"
 
 export default defineComponent({
   props: {},
-  components: {},
+  components: { PartialsSideBar, PartialsTopBar },
   name: "DashboardLayout",
   setup() {
     const router = useRouter();
