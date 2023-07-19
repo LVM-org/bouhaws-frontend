@@ -217,7 +217,7 @@ export default defineComponent({
   name: "ChallengesDetailsPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Challenges",
     });
 
 

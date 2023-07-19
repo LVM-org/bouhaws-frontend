@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <PartialsTopBar /> -->
+    <PartialsTopBar />
 
     <div class="container mx-auto">
       <slot />
@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import { defineComponent } from "vue"; 
+import PartialsTopBar from "@/components/Partials/TopBar.vue"
 
 export default defineComponent({
   props: {},
-  components: {},
+  components: { PartialsTopBar },
   name: "DefaultLayout",
 })
   

@@ -64,7 +64,7 @@ export default defineComponent({
   name: "ProfilePage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Profile",
     });
 
     const activeNav = ref("personal");
@@ -83,8 +83,7 @@ export default defineComponent({
     return { activeNav, navs,  selectTab };
   },
 });
-
-// definePageMeta({ layout: "sub-page" }); 
+ 
 </script>
 
 <style lang="scss" scoped></style>

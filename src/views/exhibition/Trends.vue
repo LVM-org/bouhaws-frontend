@@ -169,7 +169,7 @@ export default defineComponent({
   name: "ExhibitionTrendsPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Exhibition trends",
     });
 
     const activeOption = ref("all") 

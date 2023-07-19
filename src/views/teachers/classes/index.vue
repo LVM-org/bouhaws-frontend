@@ -137,7 +137,7 @@ export default defineComponent({
   name: "TeacherClassesPage",
   setup() {
     useMeta({
-      title: "Register",
+      title: "Teachers classes",
     });
  
     const classes = ref([

@@ -1,13 +1,13 @@
 <template>
   <dashboard-layout>
-    <div class="py-5 text-green-500">Hello wewdfdfd ew world</div>
+    <div class="py-5 text-green-500"> </div>
   </dashboard-layout>
 </template>  
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
-import { useMeta } from "vue-meta";
-import { scrollToTop } from "@/composables";
+import { defineComponent, onBeforeMount } from "vue";
+import { useMeta } from "vue-meta"; 
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: {},
@@ -19,6 +19,12 @@ export default defineComponent({
     useMeta({
       title: "Home",
     });
+
+    const router = useRouter()
+
+    onBeforeMount(() => {
+      router.push("/home")
+    })
 
     return {};
   },

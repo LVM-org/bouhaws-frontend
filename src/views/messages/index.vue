@@ -1,5 +1,5 @@
 <template>
-  <dashboard-layout>
+  <default-layout>
   <div
     class="fixed lg:!top-[10%] mdlg:!top-[12%] left-0 !w-screen lg:!h-[90%] mdlg:!h-[88%] overflow-hidden pb-4 flex flex-col justify-center items-center"
   >
@@ -206,7 +206,7 @@
       </div>
     </div> 
   </div>
-  </dashboard-layout>
+  </default-layout>
 </template>
 
 

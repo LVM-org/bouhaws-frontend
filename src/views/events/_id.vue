@@ -263,7 +263,7 @@ export default defineComponent({
   name: "EventsDetailsPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Events",
     });
  
     const router = useRouter();

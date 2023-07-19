@@ -218,7 +218,7 @@ export default defineComponent({
   name: "TeacherCreateProjectPage",
   setup() {
     useMeta({
-      title: "Register",
+      title: "Create Teachers project",
     });
 
     const challengePrize = ref(10)

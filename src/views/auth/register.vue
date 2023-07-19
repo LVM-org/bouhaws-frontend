@@ -11,7 +11,7 @@
 
         <TypoHeaderText  customClass="!font-medium tracking-wide !text-4xl">
           {{ isReadyToRegister ? "Almost done..." : "Register" }}
-        </TypoHeaderText>   
+        </TypoHeaderText>
       </div>
 
       <TypoNormalText customClass="!font-normal !text-base leading-6">
@@ -21,7 +21,7 @@
 
     <div class="w-full">
       <!-- first registration phase -->
-      <!-- <div v-if="!isReadyToRegister" class="space-y-5">
+      <div v-if="!isReadyToRegister" class="space-y-5">
         <FormTextField
           v-model="payload.username"
           placeholder="Username"
@@ -58,16 +58,16 @@
         <div class="flex justify-center items-center space-x-1 mt-3"> 
           <TypoNormalText> Already have an account? </TypoNormalText>
 
-          <nuxt-link to="/auth/login">
+          <router-link to="/auth/login">
             <TypoNormalText custom-class="!font-normal !text-[#336DFF] ">  Log in </TypoNormalText> 
-          </nuxt-link>
+          </router-link>
         </div>
-      </div> -->
+      </div>
 
       <!-- final registration process -->
-      <!-- <form v-else class="space-y-5" @submit.prevent="register"> 
+      <form v-else class="space-y-5" @submit.prevent="register"> 
         <FormTextField 
-          v-model="payload.student_name"
+          v-model="studentDetails.student_name"
           name="student_name" 
           placeholder="Studdent name"
           customClass="!bg-[#EBEBE5] !outline-none !focus:bg-[#EBEBE5] !rounded-[10px] !rounded-tl-[0px] "
@@ -75,21 +75,22 @@
         />  
         
         <FormSelect
+          v-model="studentDetails.year_of_enrollment"
           :placeholder="'Years  of experience'"
           custom-class="w-full space-x-2  !outline-none bg-[#EBEBE5] text-[#A0A1A3] rounded-tl-none "
           :padding="'py-4 px-4'" 
         /> 
   
         <div class="flex justify-center items-center space-x-1 pt-6">  
-          <nuxt-link to="/policy/terms">
+          <router-link to="/policy/terms">
             <TypoNormalText custom-class="!font-normal !text-[#336DFF] ">  Conditions of Use </TypoNormalText> 
-          </nuxt-link>
+          </router-link>
           
           <TypoNormalText> and </TypoNormalText>
 
-          <nuxt-link to="/policy/conditions">
+          <router-link to="/policy/conditions">
             <TypoNormalText custom-class="!font-normal !text-[#336DFF] "> Terms </TypoNormalText> 
-          </nuxt-link>
+          </router-link>
         </div>
  
         <Button
@@ -102,7 +103,7 @@
             Done
           </TypoNormalText>
         </Button> 
-      </form> -->
+      </form>
     </div>
   </div>
   </auth-layout>
@@ -162,9 +163,6 @@ export default defineComponent({
 
     return {isReadyToRegister, register, studentDetails, payload, router };
   },
-});
-
-
-// definePageMeta({ layout: "auth" });
+}); 
 
 </script>

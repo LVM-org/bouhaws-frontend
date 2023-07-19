@@ -185,7 +185,7 @@ export default defineComponent({
   name: "TeacherProjectsDetailsPage",
   setup() {
     useMeta({
-      title: "Register",
+      title: "Teachers project",
     });
 
     const activeItems = ref([

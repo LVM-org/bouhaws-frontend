@@ -217,7 +217,7 @@ export default defineComponent({
   name: "TeacherProfileDetailsPage",
   setup() {
     useMeta({
-      title: "Register",
+      title: "Teachers profile",
     });
 
     const activeOption = ref("projects");

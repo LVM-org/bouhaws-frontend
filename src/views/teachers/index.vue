@@ -186,7 +186,7 @@ export default defineComponent({
   name: "TeachersHomePage",
   setup() {
     useMeta({
-      title: "Register",
+      title: "Teachers Home",
     });
 
     const projects = ref([

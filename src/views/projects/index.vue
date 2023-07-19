@@ -45,7 +45,7 @@ export default defineComponent({
   name: "ProjectsPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Projects",
     });
 
     const activeOption = ref("active");

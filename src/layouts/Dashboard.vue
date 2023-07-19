@@ -1,10 +1,4 @@
-<template>
-  <!-- <div
-    :class="`h-full  w-full space-y-2 flex flex-col lg:text-sm mdlg:text-[12px] text-xs`"
-  >
-    <slot /> 
-    <div class="h-[120px] mdlg:!hidden"></div>
-  </div> --> 
+<template> 
   <div class="bg-[#E3E3D9] h-fit  relative font-Kanit w-full ">
     <PartialsTopBar />
   

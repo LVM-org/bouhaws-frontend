@@ -159,7 +159,7 @@ export default defineComponent({
   name: "ProjectEntriesPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Project entries",
     });
         
     const router = useRouter();

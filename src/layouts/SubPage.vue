@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#E3E3D9] relative font-Kanit w-full flex flex-col">
-    <!-- <PartialsTopBar /> -->
+    <PartialsTopBar />
 
     <div class="w-full flex flex-col items-center justify-center">
       <div
@@ -14,10 +14,11 @@
 
 <script lang="ts">
 import { ref, defineComponent } from "vue"; 
+import PartialsTopBar from "@/components/Partials/TopBar.vue"
 
 export default defineComponent({
   props: {},
-  components: {},
+  components: {PartialsTopBar},
   name: "SubPageLayout",
 }) 
 </script>

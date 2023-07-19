@@ -86,7 +86,7 @@ export default defineComponent({
   name: "ClassesPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Classes",
     });
 
 const Classes = [

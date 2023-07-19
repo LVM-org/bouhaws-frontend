@@ -111,7 +111,7 @@ export default defineComponent({
   name: "ClassesDetailsPage",
   setup() {
     useMeta({
-      title: "Home",
+      title: "Classes",
     });
     
     const activeOption = ref("projects");
