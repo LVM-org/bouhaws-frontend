@@ -59,7 +59,7 @@
         </span>
 
         <router-link class="h-12 w-12 border rounded-full" to="/profile">
-          <img src="~/assets/images/profile-picture.svg" />
+          <img src="/images/profile-picture.svg" />
         </router-link>
       </div>
     </div>

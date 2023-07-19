@@ -310,7 +310,7 @@ export default defineComponent({
       unread: 0,
     });
  
-    return { projects, selectedConvo, conversationList, projects };
+    return { projects, selectedConvo, conversationList };
   },
 });
 // definePageMeta({  layout: "sub-page" }); 
