@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createRouter, createWebHistory, useRoute, useRouter } from 'vue-router'
 import routes from './router/routes'
 import { createMetaManager } from 'vue-meta'
-// import { Logic } from 'app-logic' 
+import { Logic } from 'bouhaws-frontend-logic' 
 import DashboardLayout from './layouts/Dashboard.vue'
 import DefaultLayout from './layouts/Default.vue'
 import MilestoneDashboardLayout from './layouts/MilestoneDashboard.vue'
@@ -45,27 +45,27 @@ const init = async () => {
       const route: any = useRoute()
 
       // setup logic route and routers
-      // Logic.Common.SetRouter(router)
-      // Logic.Common.SetRoute(route)
+      Logic.Common.SetRouter(router)
+      Logic.Common.SetRoute(route)
 
       // Setup backend api url
+      Logic.Common.SetApiUrl('http://146.190.170.255/graphql')
       // Logic.Common.SetApiUrl(process.env.VUE_APP_API_URL || '')
+ 
+      const AuthUser = localStorage.getItem('auth_user')
+        ? JSON.parse(localStorage.getItem('auth_user') || '{}')
+        : undefined
 
-      // set ui frontend logic
-      // SetFrontendLogic(Logic)
-
-      // const AuthUser = localStorage.getItem('auth_user')
-      //   ? JSON.parse(localStorage.getItem('auth_user') || '{}')
-      //   : undefined
-
-      // if (AuthUser == undefined) {
-      //   if (!window.location.href.includes('/auth/reset-password')) {
-      //     Logic.Common.GoToRoute('/auth/login')
-      //   }
-      // } else {
-      //   // fetch auth user in background
-      //   Logic.Auth.GetAuthUser()
-      // }
+      if (AuthUser == undefined) {
+        if (!window.location.href.includes('/auth/reset-password')) {
+          // Logic.Common.GoToRoute('/home')
+          Logic.Common.GoToRoute('/auth/login')
+        }
+      } else {
+        // fetch auth user in background
+        // Logic.Auth.GetAuthUser()
+          Logic.Common.GoToRoute('/home')
+      }
     },
   })
     .component('dashboard-layout', DashboardLayout)

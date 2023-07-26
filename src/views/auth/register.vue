@@ -50,7 +50,7 @@
           :padding="'!py-4'"
           @click="isReadyToRegister = true" 
         >
-          <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+          <TypoNormalText :custom-class="'!font-light !w-full !text-center !flex !items-center !justify-center'" :color="'text-white'">
             Continue
           </TypoNormalText>
         </Button> 
@@ -99,7 +99,7 @@
           :useSlot="true"
           :padding="'!py-4'"
         >
-          <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+          <TypoNormalText :custom-class="'!font-light !w-full !text-center !flex !items-center !justify-center'" :color="'text-white'">
             Done
           </TypoNormalText>
         </Button> 
@@ -115,7 +115,8 @@ import { useMeta } from "vue-meta";
 import { useRouter } from "vue-router";
 import IconLoader from "@/components/IconLoader/index.vue"
 import ImageLoader from "@/components/ImageLoader/index.vue"
-import FormTextArea from "@/components/Form/TextArea.vue"
+import FormTextField from "@/components/Form/TextField.vue"
+import FormSelect from "@/components/Form/Select.vue"
 import TypoNormalText from "@/components/Typo/NormalText.vue"
 import TypoHeaderText from "@/components/Typo/HeaderText.vue"
 import Button from "@/components/Button/index.vue";
@@ -129,7 +130,8 @@ export default defineComponent({
     Button,
     Avatar,
     ImageLoader,
-    FormTextArea
+    FormTextField,
+    FormSelect
   }, 
   middlewares: {
     fetchRules: [],

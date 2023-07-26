@@ -16,7 +16,7 @@
       </div>
 
       <div class="w-full ">
-        <form class="space-y-6" @submit.prevent="login">  
+        <form class="space-y-6" @submit.prevent="SignIn">  
           <FormTextField
             v-model="payload.email"
             placeholder="Email"
@@ -34,11 +34,11 @@
 
           <Button
             type="submit" 
-            customClass="!bg-bouhaws-blue-main !w-full text-white w-full !rounded-[7px]"
+            customClass="!bg-bouhaws-blue-main text-white w-full !rounded-[7px]"
             :useSlot="true"
             :padding="'!py-4'"
           >
-            <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+            <TypoNormalText :custom-class="'!font-light !w-full !text-center !flex !items-center !justify-center'" :color="'text-white'">
               Login
             </TypoNormalText>
           </Button> 
@@ -61,11 +61,12 @@ import { defineComponent, onMounted, ref, watch } from "vue";
 import { useMeta } from "vue-meta";
 import IconLoader from "@/components/IconLoader/index.vue"
 import ImageLoader from "@/components/ImageLoader/index.vue"
+import FormTextField from "@/components/Form/TextField.vue"
 import TypoNormalText from "@/components/Typo/NormalText.vue"
 import TypoHeaderText from "@/components/Typo/HeaderText.vue"
 import Button from "@/components/Button/index.vue";
 import Avatar from "@/components/Avatar/index.vue";
-import FormTextArea from "@/components/Form/TextArea.vue"
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({ 
   components: {
@@ -75,30 +76,29 @@ export default defineComponent({
     Button,
     Avatar,
     ImageLoader,
-    FormTextArea
-  }, 
-  middlewares: {
-    fetchRules: [],
-  },
+    FormTextField
+  },  
   name: "AuthLoginPage",
   setup() {
     useMeta({
       title: "Login",
     }); 
 
-    const payload = ref({
-      email: "erev",
-      password: ""
-    }) 
+    const payload = ref({ email: "", password: "" }) 
+ 
+    const SignIn = async () => {
+      Logic.Auth.SignInPayload.email  = payload.value.email
+      Logic.Auth.SignInPayload.password  = payload.value.password
 
-    const login = () => {
-      console.log(payload.value)
+      await Logic.Auth.SignIn()
+      console.log(763723789)  
     } 
+    
     
 
     return { 
       payload,
-      login 
+      SignIn 
     };
   },
 }); 

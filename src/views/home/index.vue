@@ -12,7 +12,7 @@
             :color="'text-white'"
             :custom-class="'!text-2xl !font-normal'"
           >
-            New challenges are here!
+            New challenges are here!     
           </TypoHeaderText>
 
           <TypoNormalText :color="'text-white'" :custom-class="'!text-left'">
@@ -27,9 +27,7 @@
               :use-slot="true"
               :padding="'py-2 px-6'"
             >
-              <TypoNormalText :custom-class="'!font-normal'"
-                > Get Started </TypoNormalText
-              >
+              <TypoNormalText :custom-class="'!font-normal'"> Get Started </TypoNormalText>
             </Button>
           </div>
         </div>
@@ -39,7 +37,7 @@
         </div>
       </div>
 
-      <!-- My projects  -->
+      <!-- My projects  --> 
       <div
         class="rounded-[10px] px-6 py-6 bg-white flex flex-col space-y-3 shadow-custom"
       >
@@ -97,7 +95,7 @@
       >
         <div class="w-full flex flex-row justify-between items-center">
           <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
-            My courses
+            My courses  
           </TypoHeaderText>
           <IconLoader :name="'arrow-back'" :customClass="'h-[20px]'" />
         </div>
@@ -140,6 +138,7 @@ import Avatar from "@/components/Avatar/index.vue";
 import CardProject from "@/components/Card/Project.vue"
 import CardMyCourse from "@/components/Card/MyCourse.vue"
 import PartialsLeaderboard from "@/components/Partials/Leaderboard.vue"
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
   components: {
@@ -154,13 +153,37 @@ export default defineComponent({
     PartialsLeaderboard
   }, 
   middlewares: {
-    fetchRules: [],
+    fetchRules: [
+      {
+        domain: "Auth",
+        property: "SignUpPayload",
+        method: "SignUp",
+        // params: [10],
+        // requireAuth: true,
+      },
+      // {
+      //   domain: "Wallet",
+      //   property: "UserWallet",
+      //   method: "GetUserWallet",
+        // params: [10],
+        // requireAuth: true,
+      // },
+      // {
+      //   domain: "Wallet",
+      //   property: "UserCards",
+      //   method: "GetUserCards",
+      //   params: [],
+      //   requireAuth: true,
+      // },
+    ],
   },
   name: "HomePage",
   setup() {
     useMeta({
       title: "Home",
     });
+
+    Logic.Auth.SignUp 
 
     const projects = [
       {
@@ -260,11 +283,12 @@ export default defineComponent({
       },
     ]; 
 
+    onMounted(() => {  
+
+    });
+
     return { projects, events, courses };
   },
-});
-// definePageMeta({
-//   layout: "dashboard", 
-// });
+}); 
 
 </script>
