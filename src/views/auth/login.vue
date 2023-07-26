@@ -1,107 +1,114 @@
 <template>
   <auth-layout>
-    <div class="flex flex-col space-y-5  py-8 mx-auto max-w-xl w-3/5">
-      <div class="space-y-2 !text-green-500"> 
-        <div class=" -ml-8 flex items-center space-x-2"> 
-          <IconLoader name="arrow-back-blue"  @click="router.go(-1)"  customClass="!h-[1.7rem] cursor-pointer" />
+    <div class="flex flex-col space-y-5 py-8 mx-auto max-w-xl w-3/5">
+      <div class="space-y-2 !text-green-500">
+        <div class="-ml-8 flex items-center space-x-2">
+          <IconLoader
+            name="arrow-back-blue"
+            @click="router.go(-1)"
+            customClass="!h-[1.7rem] cursor-pointer"
+          />
 
-          <TypoHeaderText  customClass="!font-medium tracking-wide !text-4xl">
+          <TypoHeaderText customClass="!font-medium tracking-wide !text-4xl">
             Log In
-          </TypoHeaderText>   
+          </TypoHeaderText>
         </div>
-  
-        <TypoNormalText  customClass="!font-normal !text-base leading-6">
-            Welcome back!
-          </TypoNormalText>
+
+        <TypoNormalText customClass="!font-normal !text-base leading-6">
+          Welcome back!
+        </TypoNormalText>
       </div>
 
-      <div class="w-full ">
-        <form class="space-y-6" @submit.prevent="SignIn">  
+      <div class="w-full">
+        <form class="space-y-6" @submit.prevent="SignIn">
           <FormTextField
             v-model="payload.email"
             placeholder="Email"
             customClass="!bg-[#EBEBE5]  !outline-none !focus:bg-[#EBEBE5] !rounded-[12px] !rounded-tl-[0px] "
             padding="p-4"
-          />  
+          />
 
-          <FormTextField 
+          <FormTextField
             v-model="payload.password"
             type="password"
             placeholder="Password"
             customClass="!bg-[#EBEBE5]  !outline-none !focus:bg-[#EBEBE5] !rounded-[12px] !rounded-tl-[0px] "
             padding="p-4"
-          />  
+          />
 
           <Button
-            type="submit" 
+            type="submit"
             customClass="!bg-bouhaws-blue-main text-white w-full !rounded-[7px]"
             :useSlot="true"
             :padding="'!py-4'"
           >
-            <TypoNormalText :custom-class="'!font-light !w-full !text-center !flex !items-center !justify-center'" :color="'text-white'">
+            <TypoNormalText
+              :custom-class="'!font-light !w-full !text-center !flex !items-center !justify-center'"
+              :color="'text-white'"
+            >
               Login
             </TypoNormalText>
-          </Button> 
+          </Button>
         </form>
 
-        <div class="flex justify-center items-center space-x-1 mt-3"> 
+        <div class="flex justify-center items-center space-x-1 mt-3">
           <TypoNormalText> Don’t have an account? </TypoNormalText>
 
           <router-link to="/auth/register">
-            <TypoNormalText custom-class="!font-normal !text-[#336DFF] "> Register </TypoNormalText> 
+            <TypoNormalText custom-class="!font-normal !text-[#336DFF] ">
+              Register
+            </TypoNormalText>
           </router-link>
         </div>
-      </div> 
+      </div>
     </div>
   </auth-layout>
 </template>
 
-<script lang="ts">  
+<script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "vue";
 import { useMeta } from "vue-meta";
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import FormTextField from "@/components/Form/TextField.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import FormTextField from "../../components/Form/TextField.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 import { Logic } from "bouhaws-frontend-logic";
 
-export default defineComponent({ 
+export default defineComponent({
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
     ImageLoader,
-    FormTextField
-  },  
+    FormTextField,
+  },
   name: "AuthLoginPage",
   setup() {
     useMeta({
       title: "Login",
-    }); 
+    });
 
-    const payload = ref({ email: "", password: "" }) 
- 
+    const payload = ref({ email: "", password: "" });
+
     const SignIn = async () => {
-      Logic.Auth.SignInPayload.email  = payload.value.email
-      Logic.Auth.SignInPayload.password  = payload.value.password
+      Logic.Auth.SignInPayload.email = payload.value.email;
+      Logic.Auth.SignInPayload.password = payload.value.password;
 
-      await Logic.Auth.SignIn()
-      console.log(763723789)  
-    } 
-    
-    
+      // await Logic.Auth.SignIn(false);
+      // console.log(763723789);
+    };
 
-    return { 
+    return {
       payload,
-      SignIn 
+      SignIn,
     };
   },
-}); 
+});
 </script>
 
 <style scoped>

@@ -187,7 +187,7 @@
   </div>
 </template>
 
-<script lang="ts"> 
+<script lang="ts">
 import {
   capitalize,
   defineComponent,
@@ -199,12 +199,12 @@ import {
 } from "vue";
 
 import moment from "moment";
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 
 export interface SelectOption {
   key: any;
@@ -231,10 +231,10 @@ export default defineComponent({
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
-    ImageLoader
+    ImageLoader,
   },
   props: {
     withKey: {

@@ -1,119 +1,125 @@
-<template> 
-<subpage-layout>
-  <div>
-  <section class="w-full flex flex-col space-y-5 relative">
-    <div class="flex flex-row justify-between items-center sticky top-[6rem]">
-      <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
-        Class Name
-      </TypoHeaderText>
-
-      <div class="flex items-center">
-        <Tabs
-          :tabs="filterOptions"
-          :activeTab="activeOption"
-          @selectTab="(option) => {activeOption = option}"
-        />
-      </div>
-    </div>
-
-    <div class="flex flex-col space-y-5" v-if="activeOption == 'projects'">
-      <CardProjectDetails
-        v-for="project in projects"
-        :key="project.id"
-        :project="project"
-      />
-    </div>
-
-    <div class="flex flex-col space-y-5" v-if="activeOption == 'members'">
-      <div
-        class="px-4 py-4 flex flex-row items-center space-x-4 bg-white shadow-custom rounded-[10px]"
-        v-for="(member, index) in members"
-        :key="index"
-      >
-        <Avatar :photo-url="member.photo_url" :size="'55'" />
-
-        <TypoNormalText :custom-class="'!text-base'">
-          {{ member.name }}
-        </TypoNormalText>
-
+<template>
+  <subpage-layout>
+    <div>
+      <section class="w-full flex flex-col space-y-5 relative">
         <div
-          class="py-1 px-2 bg-bouhaws-purple rounded-[5px]"
-          v-if="member.is_teacher"
+          class="flex flex-row justify-between items-center sticky top-[6rem]"
         >
-          <TypoNormalText :color="'!text-white'" :custom-class="'!text-xs'">
-            Teacher
-          </TypoNormalText>
+          <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
+            Class Name
+          </TypoHeaderText>
+
+          <div class="flex items-center">
+            <Tabs
+              :tabs="filterOptions"
+              :activeTab="activeOption"
+              @selectTab="
+                (option) => {
+                  activeOption = option;
+                }
+              "
+            />
+          </div>
         </div>
-      </div>
+
+        <div class="flex flex-col space-y-5" v-if="activeOption == 'projects'">
+          <CardProjectDetails
+            v-for="project in projects"
+            :key="project.id"
+            :project="project"
+          />
+        </div>
+
+        <div class="flex flex-col space-y-5" v-if="activeOption == 'members'">
+          <div
+            class="px-4 py-4 flex flex-row items-center space-x-4 bg-white shadow-custom rounded-[10px]"
+            v-for="(member, index) in members"
+            :key="index"
+          >
+            <Avatar :photo-url="member.photo_url" :size="'55'" />
+
+            <TypoNormalText :custom-class="'!text-base'">
+              {{ member.name }}
+            </TypoNormalText>
+
+            <div
+              class="py-1 px-2 bg-bouhaws-purple rounded-[5px]"
+              v-if="member.is_teacher"
+            >
+              <TypoNormalText :color="'!text-white'" :custom-class="'!text-xs'">
+                Teacher
+              </TypoNormalText>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col space-y-5" v-if="activeOption == 'details'">
+          <div
+            class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
+          >
+            <TypoHeaderText :size="'xl'"> About </TypoHeaderText>
+
+            <TypoNormalText :custom-class="'!text-left !leading-relaxed'">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laborisM
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </TypoNormalText>
+          </div>
+
+          <div
+            class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
+          >
+            <div class="flex flex-row items-center space-x-2">
+              <IconLoader :name="'project-black'" :custom-class="'h-[19px]'" />
+              <TypoNormalText> 4 projects </TypoNormalText>
+            </div>
+          </div>
+
+          <div
+            class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
+          >
+            <div class="flex flex-row items-center space-x-2">
+              <IconLoader :name="'students-black'" :custom-class="'h-[19px]'" />
+              <TypoNormalText> 34 students </TypoNormalText>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="h-[100px]"></div>
     </div>
-
-    <div class="flex flex-col space-y-5" v-if="activeOption == 'details'">
-      <div
-        class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
-      >
-        <TypoHeaderText :size="'xl'"> About </TypoHeaderText>
-
-        <TypoNormalText :custom-class="'!text-left !leading-relaxed'">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laborisM Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua
-        </TypoNormalText>
-      </div>
-
-      <div
-        class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
-      >
-        <div class="flex flex-row items-center space-x-2">
-          <IconLoader :name="'project-black'" :custom-class="'h-[19px]'" />
-          <TypoNormalText> 4 projects </TypoNormalText>
-        </div>
-      </div>
-
-      <div
-        class="px-6 py-6 flex flex-col space-y-3 bg-white shadow-custom rounded-[10px]"
-      >
-        <div class="flex flex-row items-center space-x-2">
-          <IconLoader :name="'students-black'" :custom-class="'h-[19px]'" />
-          <TypoNormalText> 34 students </TypoNormalText>
-        </div>
-      </div>
-    </div>
-  </section>
-   
-    <div class="h-[100px]"></div>
-  </div>
-</subpage-layout>
+  </subpage-layout>
 </template>
 
-<script lang="ts"> 
+<script lang="ts">
 import { defineComponent, ref } from "vue";
-import { useMeta } from "vue-meta"; 
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
-import CardProjectDetails from "@/components/Card/ProjectDetails.vue"
+import { useMeta } from "vue-meta";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
+import CardProjectDetails from "../../components/Card/ProjectDetails.vue";
 
 export default defineComponent({
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
     ImageLoader,
-    CardProjectDetails
-  }, 
+    CardProjectDetails,
+  },
   name: "ClassesDetailsPage",
   setup() {
     useMeta({
       title: "Classes",
     });
-    
+
     const activeOption = ref("projects");
     const filterOptions = ref([
       { title: "projects" },
@@ -224,9 +230,9 @@ export default defineComponent({
       },
     ]);
 
-    return { members,projects, activeOption, filterOptions };
+    return { members, projects, activeOption, filterOptions };
   },
 });
 
-// definePageMeta({ layout: "sub-page" }); 
+// definePageMeta({ layout: "sub-page" });
 </script>

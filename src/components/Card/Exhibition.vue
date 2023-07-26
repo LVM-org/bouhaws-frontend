@@ -29,7 +29,7 @@
         </TypoNormalText>
       </div>
     </ImageLoader>
-    
+
     <template v-if="hasMoreInfo">
       <div
         class="w-full flex flex-row items-center justify-between space-x-3 bg-white rounded-b-[10px] py-4 px-4"
@@ -64,26 +64,25 @@
   </router-link>
 </template>
 
-
 <script lang="ts">
-import { defineComponent } from "vue"; 
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
+import { defineComponent } from "vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 
 export default defineComponent({
-  components: {  
+  components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
-    ImageLoader
+    ImageLoader,
   },
-  props: { 
+  props: {
     exhibition: {
       type: Object,
     },
@@ -96,12 +95,11 @@ export default defineComponent({
       default: false,
     },
   },
-  
+
   name: "",
 
-  setup() { 
-
-    return { };
+  setup() {
+    return {};
   },
 });
 </script>

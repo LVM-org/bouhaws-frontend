@@ -1,12 +1,12 @@
 <template>
   <dashboard-layout>
-    <div class="py-5 text-green-500"> </div>
+    <div class="py-5 text-green-500"></div>
   </dashboard-layout>
-</template>  
+</template>
 
 <script lang="ts">
 import { defineComponent, onBeforeMount } from "vue";
-import { useMeta } from "vue-meta"; 
+import { useMeta } from "vue-meta";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
@@ -20,11 +20,11 @@ export default defineComponent({
       title: "Home",
     });
 
-    const router = useRouter()
+    const router = useRouter();
 
-    onBeforeMount(() => {
-      router.push("/home")
-    })
+    // onBeforeMount(() => {
+    //   router.push("/home")
+    // })
 
     return {};
   },

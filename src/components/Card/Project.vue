@@ -37,7 +37,7 @@
           {{ project.deadline }}
         </TypoNormalText>
       </div>
-      
+
       <div class="w-full flex flex-row items-center space-x-1 pt-1">
         <template
           v-for="(milestone, index) in project.total_milestone"
@@ -57,41 +57,41 @@
   </ImageLoader>
 </template>
 
-<script lang="ts"> 
-import { defineComponent } from "vue"; 
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
+<script lang="ts">
+import { defineComponent } from "vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 
 export default defineComponent({
-  props: {  
-  project: {
-    type: Object as () => {
-      title: string;
-      deadline: string;
-      total_milestone: number;
-      current_milestone_index: number;
-      image_url: string;
-      type: string;
+  props: {
+    project: {
+      type: Object as () => {
+        title: string;
+        deadline: string;
+        total_milestone: number;
+        current_milestone_index: number;
+        image_url: string;
+        type: string;
+      },
+      default: () => {},
     },
-    default: () => {},
-  },
   },
 
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
-    ImageLoader
-  }, 
+    ImageLoader,
+  },
 
-  setup() {  
-    return {     }   
-  } 
-}) 
-</script>  
+  setup() {
+    return {};
+  },
+});
+</script>

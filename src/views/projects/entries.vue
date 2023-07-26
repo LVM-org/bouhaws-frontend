@@ -1,150 +1,154 @@
 <template>
   <milestone-dashboard-layout>
-  <div>  
-    <!-- Project info  -->
-    <div class="grid grid-cols-3 gap-x-6 mx-auto relative">
-      <section class="col-span-2 space-y-6 w-full">
-        <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
-          <div class="flex justify-between items-center">
-            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-              {{ project?.title }}
-            </TypoHeaderText>
-          </div>
-
-          <div class="flex items-center flex-row space-x-5 text-sm">
-            <TypoNormalText
-              v-if="project.type"
-              :customClass="`px-4 py-1 capitalize rounded-[5px] ${
-                project.type == 'challenge'
-                  ? 'bg-bouhaws-purple'
-                  : 'bg-bouhaws-orange'
-              }`"
-              :color="'text-white'"
-            >
-              {{ project.type }}
-            </TypoNormalText>
-
-            <span class="flex items-center space-x-2">
-              <Avatar :photoUrl="project.user.photo_url" :size="'20'"></Avatar>
-              <TypoNormalText :customClass="'!font-normal'">
-                {{ project.user.name }}
-              </TypoNormalText>
-            </span>
-
-            <TypoNormalText>
-              {{ project.dataPosted }}
-            </TypoNormalText>
-
-            <TypoNormalText :color="'text-[#FF3333]'">
-              {{ project.deadline }}
-            </TypoNormalText>
-          </div>
-
-          <TypoNormalText :customClass="'!text-left !leading-relaxed'">
-            {{ project.description }}
-          </TypoNormalText>
-          
+    <div>
+      <!-- Project info  -->
+      <div class="grid grid-cols-3 gap-x-6 mx-auto relative">
+        <section class="col-span-2 space-y-6 w-full">
           <div
-            class="w-full flex flex-row no-scrollbar space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+            class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4"
           >
-            <div class="flex flex-row space-x-3 py-2 pr-4">
-              <ImageLoader
-                v-for="image in images"
-                :key="image"
-                :photoUrl="image.url"
-                :customClass="'h-[10rem] w-[10rem] rounded-[7px] relative'"
-              > 
-              </ImageLoader>
+            <div class="flex justify-between items-center">
+              <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+                {{ project?.title }}
+              </TypoHeaderText>
             </div>
-          </div>
-        </div>
 
-        <div
-          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
-        >
-          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-            Requirements
-          </TypoHeaderText>
-
-          <div class="flex flex-col space-y-1 text-sm">
-            <div
-              v-for="requirement in requirements"
-              :key="requirement.title"
-              class="flex space-x-3 items-center font-light py-1 px-2"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-dark"></span>
-              <TypoNormalText>
-                {{ requirement.title }}
-              </TypoNormalText>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
-        >
-          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-            Entries ({{ exhibitions.length }})
-          </TypoHeaderText>
-
-          <div class="grid grid-cols-3 gap-3">
-            <CardImgUser
-              v-for="(exhibition, index) in exhibitions"
-              :key="index"
-              :item="exhibition"
-            />
-          </div>
-        </div>
-      </section>
- 
-      <section class="col-span-1 w-full space-y-4 ">
-        <form
-          @submit.prevent="uploadForm"
-          class="rounded-[10px] box-shadow bg-white justify-center items-center p-5 flex flex-col space-y-3 sticky top-0"
-        > 
-          <IconLoader name="angular-piano" customClass="h-[100px]"/> 
-
-          <TypoHeaderText :size="'base'" :customClass="'!font-normal'">
-            Submit entry
-          </TypoHeaderText>  
-
-          <div class="w-full pt-8 flex flex-col">
-            <Button
-              type="submit"
-              text="Submit"
-              customClass="!bg-bouhaws-blue-main text-white w-full"
-              :useSlot="true"
-              :padding="'py-3'"
-            >
+            <div class="flex items-center flex-row space-x-5 text-sm">
               <TypoNormalText
-                :custom-class="'!font-normal'"
+                v-if="project.type"
+                :customClass="`px-4 py-1 capitalize rounded-[5px] ${
+                  project.type == 'challenge'
+                    ? 'bg-bouhaws-purple'
+                    : 'bg-bouhaws-orange'
+                }`"
                 :color="'text-white'"
-              > 
-                Edit
+              >
+                {{ project.type }}
               </TypoNormalText>
-            </Button>
-          </div>
-        </form>
-      </section>
-    </div> 
 
-    <div class="h-[100px]"></div>
-  </div>
+              <span class="flex items-center space-x-2">
+                <Avatar
+                  :photoUrl="project.user.photo_url"
+                  :size="'20'"
+                ></Avatar>
+                <TypoNormalText :customClass="'!font-normal'">
+                  {{ project.user.name }}
+                </TypoNormalText>
+              </span>
+
+              <TypoNormalText>
+                {{ project.dataPosted }}
+              </TypoNormalText>
+
+              <TypoNormalText :color="'text-[#FF3333]'">
+                {{ project.deadline }}
+              </TypoNormalText>
+            </div>
+
+            <TypoNormalText :customClass="'!text-left !leading-relaxed'">
+              {{ project.description }}
+            </TypoNormalText>
+
+            <div
+              class="w-full flex flex-row no-scrollbar space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+            >
+              <div class="flex flex-row space-x-3 py-2 pr-4">
+                <ImageLoader
+                  v-for="image in images"
+                  :key="image"
+                  :photoUrl="image.url"
+                  :customClass="'h-[10rem] w-[10rem] rounded-[7px] relative'"
+                >
+                </ImageLoader>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+          >
+            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+              Requirements
+            </TypoHeaderText>
+
+            <div class="flex flex-col space-y-1 text-sm">
+              <div
+                v-for="requirement in requirements"
+                :key="requirement.title"
+                class="flex space-x-3 items-center font-light py-1 px-2"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-dark"></span>
+                <TypoNormalText>
+                  {{ requirement.title }}
+                </TypoNormalText>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+          >
+            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+              Entries ({{ exhibitions.length }})
+            </TypoHeaderText>
+
+            <div class="grid grid-cols-3 gap-3">
+              <CardImgUser
+                v-for="(exhibition, index) in exhibitions"
+                :key="index"
+                :item="exhibition"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="col-span-1 w-full space-y-4">
+          <form
+            @submit.prevent="uploadForm"
+            class="rounded-[10px] box-shadow bg-white justify-center items-center p-5 flex flex-col space-y-3 sticky top-0"
+          >
+            <IconLoader name="angular-piano" customClass="h-[100px]" />
+
+            <TypoHeaderText :size="'base'" :customClass="'!font-normal'">
+              Submit entry
+            </TypoHeaderText>
+
+            <div class="w-full pt-8 flex flex-col">
+              <Button
+                type="submit"
+                text="Submit"
+                customClass="!bg-bouhaws-blue-main text-white w-full"
+                :useSlot="true"
+                :padding="'py-3'"
+              >
+                <TypoNormalText
+                  :custom-class="'!font-normal'"
+                  :color="'text-white'"
+                >
+                  Edit
+                </TypoNormalText>
+              </Button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div class="h-[100px]"></div>
+    </div>
   </milestone-dashboard-layout>
 </template>
- 
-<script lang="ts"> 
-import { defineComponent, onMounted, ref, watch } from "vue";
-import { useMeta } from "vue-meta"; 
-import { useRouter } from "vue-router";
-import CardImgUser from "@/components/Card/ImgUser.vue"
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
 
+<script lang="ts">
+import { defineComponent, onMounted, ref, watch } from "vue";
+import { useMeta } from "vue-meta";
+import { useRouter } from "vue-router";
+import CardImgUser from "../../components/Card/ImgUser.vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 
 export default defineComponent({
   components: {
@@ -154,14 +158,14 @@ export default defineComponent({
     Button,
     Avatar,
     ImageLoader,
-    CardImgUser
+    CardImgUser,
   },
   name: "ProjectEntriesPage",
   setup() {
     useMeta({
       title: "Project entries",
     });
-        
+
     const router = useRouter();
     const project = ref({
       id: "1",
@@ -198,15 +202,15 @@ export default defineComponent({
       { title: "Project entries must be less than 5MB." },
       { title: "Images resolution should be at least 150 pixels." },
     ]);
- 
-    const images = ref([ 
+
+    const images = ref([
       { url: `/images/entry-1.png` },
       { url: `/images/entry-8.png` },
       { url: `/images/entry-5.png` },
       { url: `/images/entry-8.png` },
       { url: `/images/entry-6.png` },
-      { url: `/images/entry-4.png` }, 
-      { url: `/images/entry-3.png` }, 
+      { url: `/images/entry-4.png` },
+      { url: `/images/entry-3.png` },
     ]);
 
     const payload = ref({
@@ -285,9 +289,17 @@ export default defineComponent({
       },
     ]);
 
-    return {exhibitions,uploadForm,payload,images,requirements,showProjectDetailsModal,project, router};
+    return {
+      exhibitions,
+      uploadForm,
+      payload,
+      images,
+      requirements,
+      showProjectDetailsModal,
+      project,
+      router,
+    };
   },
 });
-// definePageMeta({ layout: "milestone-milestone-dashboard" }); 
-
+// definePageMeta({ layout: "milestone-milestone-dashboard" });
 </script>

@@ -74,34 +74,34 @@
   </router-link>
 </template>
 
-<script lang="ts"> 
-import { defineComponent } from "vue"; 
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
+<script lang="ts">
+import { defineComponent } from "vue";
+import IconLoader from "../../components/IconLoader/index.vue";
+import ImageLoader from "../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../components/Typo/HeaderText.vue";
+import Button from "../../components/Button/index.vue";
+import Avatar from "../../components/Avatar/index.vue";
 
 export default defineComponent({
-  props: { 
-  project: {
-    type: Object,
-    default: () => {},
-  },
+  props: {
+    project: {
+      type: Object,
+      default: () => {},
+    },
   },
 
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
-    ImageLoader
-  }, 
+    ImageLoader,
+  },
 
-  setup() {  
-    return {     }   
-  } 
-}) 
-</script>  
+  setup() {
+    return {};
+  },
+});
+</script>

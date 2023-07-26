@@ -16,15 +16,14 @@
 
 <script lang="ts">
 import { ref, defineComponent } from "vue";
-import Quotes from "@/components/Quotes/index.vue"; 
+import Quotes from "../components/Quotes/index.vue";
 
 export default defineComponent({
   props: {},
   components: { Quotes },
   name: "AuthLayout",
   setup() {
-
-    return {}
-  } 
-});  
+    return {};
+  },
+});
 </script>

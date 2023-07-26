@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createRouter, createWebHistory, useRoute, useRouter } from 'vue-router'
 import routes from './router/routes'
 import { createMetaManager } from 'vue-meta'
-import { Logic } from 'bouhaws-frontend-logic' 
+import { Logic } from 'bouhaws-frontend-logic'
 import DashboardLayout from './layouts/Dashboard.vue'
 import DefaultLayout from './layouts/Default.vue'
 import MilestoneDashboardLayout from './layouts/MilestoneDashboard.vue'
@@ -51,7 +51,7 @@ const init = async () => {
       // Setup backend api url
       Logic.Common.SetApiUrl('http://146.190.170.255/graphql')
       // Logic.Common.SetApiUrl(process.env.VUE_APP_API_URL || '')
- 
+
       const AuthUser = localStorage.getItem('auth_user')
         ? JSON.parse(localStorage.getItem('auth_user') || '{}')
         : undefined
@@ -64,7 +64,7 @@ const init = async () => {
       } else {
         // fetch auth user in background
         // Logic.Auth.GetAuthUser()
-          Logic.Common.GoToRoute('/home')
+        // Logic.Common.GoToRoute('/home')
       }
     },
   })

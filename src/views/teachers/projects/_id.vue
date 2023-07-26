@@ -1,58 +1,62 @@
 <template>
   <subpage-layout>
-  <div class="container mx-auto grid grid-cols-3 gap-6 px-2 relative"> 
-    <!-- right side  -->
-    <section class="col-span-1 h-fit pb-5  pt-5 sticky top-[5rem]">
-          <!--  Chat list section -->
-      <div
-        class="col-span-2 h-full bg-white shadow-custom rounded-[10px] relative flex flex-col"
-      >
+    <div class="container mx-auto grid grid-cols-3 gap-6 px-2 relative">
+      <!-- right side  -->
+      <section class="col-span-1 h-fit pb-5 pt-5 sticky top-[5rem]">
+        <!--  Chat list section -->
         <div
-          class="h-full flex rounded-lg flex-col space-y-2 p-4  overflow-y-auto bg-[#202128] relative"
+          class="col-span-2 h-full bg-white shadow-custom rounded-[10px] relative flex flex-col"
         >
           <div
-            class="p-4 pb-0 top-0 sticky w-full flex flex-row items-center "
+            class="h-full flex rounded-lg flex-col space-y-2 p-4 overflow-y-auto bg-[#202128] relative"
           >
-            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal !text-white'">
-              Milestones
-            </TypoHeaderText>
-          </div>
-
-         
-          <div class="h-full flex flex-col space-y-3 overflow-y-auto w-full p-2 -mt-2">
             <div
-              class="w-full flex flex-row space-x-3 items-center px-3 py-3 rounded-[10px] bg-[#0E1011]"
-              v-for="(item, index) in activeItems"
-              :key="index"
+              class="p-4 pb-0 top-0 sticky w-full flex flex-row items-center"
             >
-              <ImageLoader
-                :customClass="'w-[60px] h-[60px] rounded-[5px]'"
-                :photoUrl="item.image_url"
-              />
+              <TypoHeaderText
+                :size="'3xl'"
+                :customClass="'!font-normal !text-white'"
+              >
+                Milestones
+              </TypoHeaderText>
+            </div>
 
-              <div class="flex flex-grow flex-col space-y-1">
-                <TypoNormalText
-                  :color="'text-white'"
-                  :custom-class="'!font-normal'"
-                >
-                  {{ item.title }}
-                </TypoNormalText>
+            <div
+              class="h-full flex flex-col space-y-3 overflow-y-auto w-full p-2 -mt-2"
+            >
+              <div
+                class="w-full flex flex-row space-x-3 items-center px-3 py-3 rounded-[10px] bg-[#0E1011]"
+                v-for="(item, index) in activeItems"
+                :key="index"
+              >
+                <ImageLoader
+                  :customClass="'w-[60px] h-[60px] rounded-[5px]'"
+                  :photoUrl="item.image_url"
+                />
 
-                <TypoNormalText
-                  :color="'text-white'"
-                  :custom-class="'!text-xs pb-1'"
-                >
-                  {{ item.current_point }}/{{ item.total_point }} points
-                </TypoNormalText> 
+                <div class="flex flex-grow flex-col space-y-1">
+                  <TypoNormalText
+                    :color="'text-white'"
+                    :custom-class="'!font-normal'"
+                  >
+                    {{ item.title }}
+                  </TypoNormalText>
+
+                  <TypoNormalText
+                    :color="'text-white'"
+                    :custom-class="'!text-xs pb-1'"
+                  >
+                    {{ item.current_point }}/{{ item.total_point }} points
+                  </TypoNormalText>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div> 
-    </section>
+      </section>
 
-    <!-- main content -->
-     <section class="col-span-2  sticky top-[5rem] pt-5 space-y-6 w-full">
+      <!-- main content -->
+      <section class="col-span-2 sticky top-[5rem] pt-5 space-y-6 w-full">
         <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">
             <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
@@ -88,10 +92,12 @@
               {{ project.deadline }}
             </TypoNormalText>
 
-            <div class="flex items-center space-x-1"> 
-          <IconLoader name="gift-active" :customClass="'!h-4'"/>  
-          <TypoNormalText customClass="!text-[#27BA8E]"> ${{ project.giftPrice }} </TypoNormalText>
-        </div> 
+            <div class="flex items-center space-x-1">
+              <IconLoader name="gift-active" :customClass="'!h-4'" />
+              <TypoNormalText customClass="!text-[#27BA8E]">
+                ${{ project.giftPrice }}
+              </TypoNormalText>
+            </div>
           </div>
 
           <TypoNormalText :customClass="'!tecxt-left !leading-relaxed'">
@@ -107,7 +113,7 @@
                 :key="image"
                 :photoUrl="image.url"
                 :customClass="'h-[10rem] w-[10rem] rounded-[7px] relative'"
-              > 
+              >
               </ImageLoader>
             </div>
           </div>
@@ -155,33 +161,33 @@
           </TypoHeaderText>
         </div>
 
-    <div class="h-[100px]"></div>
-      </section> 
-  </div>
+        <div class="h-[100px]"></div>
+      </section>
+    </div>
   </subpage-layout>
 </template>
 
-<script lang="ts">  
+<script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "vue";
 import { useMeta } from "vue-meta";
-import IconLoader from "@/components/IconLoader/index.vue"
-import ImageLoader from "@/components/ImageLoader/index.vue"
-import TypoNormalText from "@/components/Typo/NormalText.vue"
-import TypoHeaderText from "@/components/Typo/HeaderText.vue"
-import Button from "@/components/Button/index.vue";
-import Avatar from "@/components/Avatar/index.vue";
-import CardImgUser from "@/components/Card/ImgUser.vue";
+import IconLoader from "../../../components/IconLoader/index.vue";
+import ImageLoader from "../../../components/ImageLoader/index.vue";
+import TypoNormalText from "../../../components/Typo/NormalText.vue";
+import TypoHeaderText from "../../../components/Typo/HeaderText.vue";
+import Button from "../../../components/Button/index.vue";
+import Avatar from "../../../components/Avatar/index.vue";
+import CardImgUser from "../../../components/Card/ImgUser.vue";
 
 export default defineComponent({
   components: {
     IconLoader,
     TypoHeaderText,
-    TypoNormalText, 
+    TypoNormalText,
     Button,
     Avatar,
     ImageLoader,
-    CardImgUser
-  }, 
+    CardImgUser,
+  },
   name: "TeacherProjectsDetailsPage",
   setup() {
     useMeta({
@@ -221,16 +227,15 @@ export default defineComponent({
       },
     ]);
 
-    const images = ref([ 
+    const images = ref([
       { url: `/images/entry-1.png` },
       { url: `/images/entry-8.png` },
       { url: `/images/entry-5.png` },
       { url: `/images/entry-8.png` },
       { url: `/images/entry-6.png` },
-      { url: `/images/entry-4.png` }, 
-      { url: `/images/entry-3.png` }, 
+      { url: `/images/entry-4.png` },
+      { url: `/images/entry-3.png` },
     ]);
-
 
     const project = ref({
       id: "1",
@@ -257,8 +262,8 @@ export default defineComponent({
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
       milestone: 2,
       memberOfTeam: 4,
-      deadline: `Deadline in 15 days`, 
-        giftPrice: 900, 
+      deadline: `Deadline in 15 days`,
+      giftPrice: 900,
     });
 
     const requirements = ref([
@@ -332,12 +337,11 @@ export default defineComponent({
         },
         image_url: `/images/entry-8.png`,
       },
-    ]); 
+    ]);
 
     return { entries, requirements, project, images, activeItems };
   },
 });
 
-// definePageMeta({  layout: "sub-page" }); 
-
+// definePageMeta({  layout: "sub-page" });
 </script>

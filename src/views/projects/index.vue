@@ -1,41 +1,41 @@
 <template>
   <dashboard-layout>
-  <section class="col-span-3 flex flex-col space-y-3 relative">
-    <div class="flex flex-row justify-between items-center sticky top-0">
-      <Tabs
-        :tabs="filterOptions1"
-        :activeTab="activeOption1"
-        @selectTab="selectActiveTab"
-      />
-
-      <div class="flex items-center flex-row bg-[#EBEBE5] rounded-[5px]">
+    <section class="col-span-3 flex flex-col space-y-3 relative">
+      <div class="flex flex-row justify-between items-center sticky top-0">
         <Tabs
-          :tabs="filterOptions"
-          :activeTab="activeOption"
-          @selectTab="selectActiveOption"
-          :is-spaced="false"
+          :tabs="filterOptions1"
+          :activeTab="activeOption1"
+          @selectTab="selectActiveTab"
         />
-      </div> 
-    </div>
 
-    <div class="flex flex-col space-y-5">
-      <CardProjectDetails
-        v-for="project in projects"
-        :key="project.id"
-        :project="project"
-      /> 
-    </div>
-  </section>
-  
-  <div class="h-[100px]"></div>
+        <div class="flex items-center flex-row bg-[#EBEBE5] rounded-[5px]">
+          <Tabs
+            :tabs="filterOptions"
+            :activeTab="activeOption"
+            @selectTab="selectActiveOption"
+            :is-spaced="false"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col space-y-5">
+        <CardProjectDetails
+          v-for="project in projects"
+          :key="project.id"
+          :project="project"
+        />
+      </div>
+    </section>
+
+    <div class="h-[100px]"></div>
   </dashboard-layout>
 </template>
 
-<script lang="ts"> 
+<script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "vue";
-import { useMeta } from "vue-meta"; 
-import CardProjectDetails from "@/components/Card/ProjectDetails.vue"
-import Tabs from "@/components/Tabs/index.vue";
+import { useMeta } from "vue-meta";
+import CardProjectDetails from "../../components/Card/ProjectDetails.vue";
+import Tabs from "../../components/Tabs/index.vue";
 
 export default defineComponent({
   components: { CardProjectDetails, Tabs },
@@ -131,19 +131,25 @@ export default defineComponent({
         completed: true,
       },
     ]);
- 
-    const selectActiveTab =  (value: string) => {
-      activeOption1.value = value
-    }
-    const selectActiveOption =  (value: string) => {
-      activeOption.value = value
-    }
 
+    const selectActiveTab = (value: string) => {
+      activeOption1.value = value;
+    };
+    const selectActiveOption = (value: string) => {
+      activeOption.value = value;
+    };
 
-    return { activeOption, activeOption1, filterOptions, filterOptions1, projects, selectActiveTab, selectActiveOption};
+    return {
+      activeOption,
+      activeOption1,
+      filterOptions,
+      filterOptions1,
+      projects,
+      selectActiveTab,
+      selectActiveOption,
+    };
   },
 });
 
 // definePageMeta({ layout: "dashboard" });
-
 </script>
