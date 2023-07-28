@@ -48,50 +48,50 @@
 
       <!-- Project info  -->
       <div class="grid grid-cols-3 gap-x-6 mx-auto relative">
-        <section class="col-span-2 space-y-6 w-full">
+        <section class="col-span-2 space-y-6 w-full"> 
           <div
             class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4"
           >
             <div class="flex justify-between items-center">
               <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-                {{ project?.title }}
+                {{ Project?.title }}
               </TypoHeaderText>
             </div>
 
             <div class="flex items-center flex-row space-x-5 text-sm">
               <TypoNormalText
-                v-if="project.type"
+                v-if="Project.type"
                 :customClass="`px-4 py-1 capitalize rounded-[5px] ${
-                  project.type == 'challenge'
+                  Project.type == 'challenge'
                     ? 'bg-bouhaws-purple'
                     : 'bg-bouhaws-orange'
                 }`"
                 :color="'text-white'"
               >
-                {{ project.type }}
+                {{ Project.type }}
               </TypoNormalText>
 
               <span class="flex items-center space-x-2">
                 <Avatar
-                  :photoUrl="project.user.photo_url"
+                  :photoUrl="Project.user?.profile?.photo_url"
                   :size="'20'"
                 ></Avatar>
                 <TypoNormalText :customClass="'!font-normal'">
-                  {{ project.user.name }}
+                  {{ Project.user.name }}
                 </TypoNormalText>
               </span>
 
               <TypoNormalText>
-                {{ project.dataPosted }}
+                {{ Project.created_at }}
               </TypoNormalText>
 
               <TypoNormalText :color="'text-[#FF3333]'">
-                {{ project.deadline }}
+                {{ Project.end_date }}
               </TypoNormalText>
             </div>
 
             <TypoNormalText :customClass="'!text-left !leading-relaxed'">
-              {{ project.description }}
+              {{ Project.description }}
             </TypoNormalText>
 
             <div
@@ -118,13 +118,13 @@
 
             <div class="flex flex-col space-y-1 text-sm">
               <div
-                v-for="requirement in requirements"
-                :key="requirement.title"
+                v-for="requirement in Project?.requirements?.split(', ')"
+                :key="requirement"
                 class="flex space-x-3 items-center font-light py-1 px-2"
               >
                 <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-dark"></span>
                 <TypoNormalText>
-                  {{ requirement.title }}
+                  {{ requirement }}
                 </TypoNormalText>
               </div>
             </div>
@@ -134,16 +134,20 @@
             class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
           >
             <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-              Entries ({{ exhibitions.length }})
+              Entries ({{ Project?.entries?.length }})
             </TypoHeaderText>
 
-            <div class="grid grid-cols-3 gap-3">
-              <CardImgUser
-                v-for="(exhibition, index) in exhibitions"
+            <div v-if="Project?.entries?.lenght" class="grid grid-cols-3 gap-3 min-h-10">
+              <!-- <CardImgUser
+                v-for="(exhibition, indexs) in exhibitions"
                 :key="index"
                 :item="exhibition"
-              />
+              /> --> 
             </div>
+ 
+            <TypoHeaderText :size="'2xl'" :customClass="'!font-normal !flex !items-center !justify-center p-4'" v-else>
+             No Entries  found
+            </TypoHeaderText>
           </div>
         </section>
 
@@ -261,9 +265,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch, onBeforeMount } from "vue";
 import { useMeta } from "vue-meta";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import CardImgUser from "../../components/Card/ImgUser.vue";
 import IconLoader from "../../components/IconLoader/index.vue";
 import ImageLoader from "../../components/ImageLoader/index.vue";
@@ -271,6 +275,7 @@ import TypoNormalText from "../../components/Typo/NormalText.vue";
 import TypoHeaderText from "../../components/Typo/HeaderText.vue";
 import Button from "../../components/Button/index.vue";
 import Avatar from "../../components/Avatar/index.vue";
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
   components: {
@@ -281,18 +286,16 @@ export default defineComponent({
     Avatar,
     ImageLoader,
     CardImgUser,
-  },
-
-  middlewares: {
-    fetchRules: [],
-  },
+  }, 
   name: "ProjectsDetailsPage",
   setup() {
     useMeta({
-      title: "Projects",
+      title: `Projects `,
     });
 
+    const isLoading = ref(false);
     const router = useRouter();
+    const route = useRoute();
     const project = ref({
       id: "1",
       title: `Mother’s Day`,
@@ -322,6 +325,7 @@ export default defineComponent({
       completed: true,
     });
 
+    const Project =  ref(Logic.Project?.Project)
     const showProjectDetailsModal = ref(false);
 
     const requirements = ref([
@@ -415,6 +419,19 @@ export default defineComponent({
       },
     ]);
 
+    const getProjectDetails = async () => {
+      isLoading.value = true
+      const uuid = route.params.uuid
+      Logic.Project.ProjectPayload = {uuid} 
+      await Logic.Project.GetProject()   
+      isLoading.value = false
+    }
+
+    onBeforeMount(() => {
+      getProjectDetails()
+      Logic.Project.watchProperty("Project", Project)
+    })
+
     return {
       router,
       project,
@@ -424,6 +441,7 @@ export default defineComponent({
       payload,
       uploadForm,
       exhibitions,
+      Project
     };
   },
 });

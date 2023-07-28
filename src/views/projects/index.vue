@@ -18,13 +18,49 @@
         </div>
       </div>
 
-      <div class="flex flex-col space-y-5">
+      <!-- 
+          {
+    "id": "1",
+    "title": "Project Young",
+    "type": "tet",
+    "created_at": "2023-07-24 01:49:21",
+    "description": "My project description",
+    "end_date": "2022-09-24 00:00:00",
+    "photo_url": null,
+    "milestones": [],
+    "__typename": "Project"
+  },
+
+  {
+          "id": "1",
+          "title": "Project Young",
+          "type": "tet",
+          "created_at": "2023-07-24 01:49:21",
+          "description": "My project description",
+          "end_date": "2022-09-24 00:00:00",
+          "photo_url": null,
+          "milestones": [],
+          "user": {
+            "email": "test@gmail.com",
+            "id": "1",
+            "name": "Test Name",
+            "profile": {
+              "photo_url": null,
+              "points": 0
+            }
+          }
+        },
+       -->
+
+      <div class="flex flex-col space-y-5" v-if="AllProjects.length"> 
         <CardProjectDetails
-          v-for="project in projects"
+          v-for="project in AllProjects"
           :key="project.id"
           :project="project"
-        />
+        /> 
       </div>
+       
+      <FullscreenLoading :loading="isLoading" v-else/> 
     </section>
 
     <div class="h-[100px]"></div>
@@ -32,22 +68,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { defineComponent, onBeforeMount, ref, watch , computed, reactive} from "vue";
 import { useMeta } from "vue-meta";
-import CardProjectDetails from "../../components/Card/ProjectDetails.vue";
+import CardProjectDetails from "@/components/Card/ProjectDetails.vue";
+import FullscreenLoading  from "@/components/FullscreenLoading/index.vue";
 import Tabs from "../../components/Tabs/index.vue";
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
-  components: { CardProjectDetails, Tabs },
-  middlewares: {
-    fetchRules: [],
-  },
+  components: { 
+    CardProjectDetails,
+    FullscreenLoading ,
+    Tabs
+  }, 
   name: "ProjectsPage",
   setup() {
     useMeta({
       title: "Projects",
-    });
-
+    }); 
+    const isLoading = ref(false);
     const activeOption = ref("active");
     const activeOption1 = ref("all");
     const filterOptions = ref([{ title: "active" }, { title: "completed" }]);
@@ -57,99 +96,41 @@ export default defineComponent({
       { title: "challenge" },
     ]);
 
-    const projects = ref([
-      {
-        id: "1",
-        title: `Project title`,
-        type: "class",
-        dataPosted: `Posted 2 hours ago`,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-        milestones: {
-          total: 5,
-          current: 3,
-        },
-        deadline: `Deadline in 15 days`,
-        user: {
-          name: "Teacher",
-          photo_url: "/images/avatar-2.png",
-        },
-        image_url: "/images/gallery-project-1.png",
-        completed: true,
-      },
-      {
-        id: "1",
-        title: `Project title`,
-        type: "class",
-        dataPosted: `Posted 2 hours ago`,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-        milestones: {
-          total: 5,
-          current: 3,
-        },
-        deadline: `Deadline in 15 days`,
-        user: {
-          name: "Brand",
-          photo_url: "/images/avatar-5.png",
-        },
-        image_url: "/images/gallery-project-2.png",
-        completed: true,
-      },
-      {
-        id: "1",
-        title: `Project title`,
-        type: "class",
-        dataPosted: `Posted 2 hours ago`,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-        milestones: {
-          total: 5,
-          current: 3,
-        },
-        deadline: `Deadline in 15 days`,
-        user: {
-          name: "Teacher",
-          photo_url: "/images/avatar-3.png",
-        },
-        image_url: "/images/gallery-project-3.png",
-        completed: true,
-      },
-      {
-        id: "1",
-        title: `Project title`,
-        type: "class",
-        dataPosted: `Posted 2 hours ago`,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-        milestones: {
-          total: 5,
-          current: 3,
-        },
-        deadline: `Deadline in 15 days`,
-        user: {
-          name: "Brand",
-          photo_url: "/images/avatar-4.png",
-        },
-        image_url: "/images/event-gallery.png",
-        completed: true,
-      },
-    ]);
-
+    const AllProjects =   ref(Logic.Project?.AllProjects)
+    
     const selectActiveTab = (value: string) => {
       activeOption1.value = value;
     };
     const selectActiveOption = (value: string) => {
       activeOption.value = value;
     };
+    
+
+    const getAllProjects = async () => {
+      isLoading.value = true
+      Logic.Project.GetProjectsPayload = {
+        first: 10,
+        page: 1 
+      }
+      await Logic.Project.GetProjects()  
+      isLoading.value = false
+    }
+
+    onBeforeMount(async() => {
+      await getAllProjects() 
+      Logic.Project.watchProperty("AllProjects", AllProjects)
+    })
 
     return {
       activeOption,
       activeOption1,
       filterOptions,
       filterOptions1,
-      projects,
+      AllProjects,
       selectActiveTab,
-      selectActiveOption,
+      selectActiveOption, 
+      isLoading
     };
   },
-});
-
-// definePageMeta({ layout: "dashboard" });
+}); 
 </script>

@@ -25,11 +25,11 @@
 
             <div class="flex flex-row">
               <Button
-                :custom-class="'!bg-white !w-auto'"
+                :custom-class="'!bg-white  !flex !w-fit'"
                 :use-slot="true"
                 :padding="'py-2 px-6'"
               >
-                <TypoNormalText :custom-class="'!font-normal'">
+                <TypoNormalText :custom-class="'!flex !font-normal'">
                   Get Started
                 </TypoNormalText>
               </Button>
@@ -49,7 +49,10 @@
             <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
               My projects
             </TypoHeaderText>
-            <IconLoader :name="'arrow-back'" :customClass="'h-[20px]'" />
+
+            <router-link to="/projects">
+              <IconLoader :name="'arrow-back'" :customClass="'h-[20px]'" />
+            </router-link>
           </div>
 
           <div

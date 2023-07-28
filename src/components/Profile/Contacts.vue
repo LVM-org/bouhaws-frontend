@@ -28,7 +28,7 @@
             :useSlot="true"
             :padding="'!py-4'"
           >
-            <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+            <TypoNormalText :custom-class="'!font-light !d-flex !justify-center !w-full !items-center'" :color="'text-white'">
               Save
             </TypoNormalText>
           </Button>
@@ -39,13 +39,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue"; 
+import { defineComponent, ref, reactive } from "vue"; 
 import IconLoader from "@/components/IconLoader/index.vue"
 import ImageLoader from "@/components/ImageLoader/index.vue"
 import TypoNormalText from "@/components/Typo/NormalText.vue"
 import TypoHeaderText from "@/components/Typo/HeaderText.vue"
 import Button from "@/components/Button/index.vue";
 import Avatar from "@/components/Avatar/index.vue";
+import FormTextField from "../../components/Form/TextField.vue";
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
   components: {
@@ -54,22 +56,24 @@ export default defineComponent({
     TypoNormalText, 
     Button,
     Avatar,
-    ImageLoader
-  },
-  props: { 
-  },
-  
-  name: "",
+    ImageLoader,
+    FormTextField
+  }, 
+   
 
   setup() { 
-const payload = ref({
-  email: "hermanwayne@gmail.com",
-  phone_number: `+90 815 489 2067`,
-});
+    const loading = ref(false)
+    const payload = reactive({
+      email: "hermanwayne@gmail.com",
+      phone_number: `+90 815 489 2067`,
+    });
 
-const updateContact = () => {
-  console.log(payload.value);
-};
+    const updateContact = () => { 
+      console.log(20)
+      loading.value = true  
+      Logic.Auth.GetAuthUser();
+      loading.value = false 
+    };
 
     return { payload, updateContact };
   },

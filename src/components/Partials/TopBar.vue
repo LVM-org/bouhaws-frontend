@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="w-screen text-neutral-800 bg-white mx-auto relative !z-10 top-0 -mt-0 shadow-md"
+    class="w-screen text-neutral-800 bg-white mx-auto sticky !z-10 top-0 -mt-0 shadow-md"
   >
     <div
       class="w-full flex container sticky bg-white px-8 mx-auto items-center justify-between py-4"
@@ -44,13 +44,13 @@
       </div>
 
       <div class="space-x-6 flex items-center justify-center">
-        <Button
-          text=""
+        <Button 
           :use-slot="true"
-          customClass="h-9 !px-4 !font-normal text-center !bg-[#1A52E4] !rounded-[5px]"
+          customClass="h-9 !bg-bouhaws-blue-main !rounded-[5px]"
+            :padding="'!px-4'"
         >
-          <TypoNormalText :customClass="'!text-white'">
-            Share your artwork
+          <TypoNormalText :customClass="'!text-white  !flex !items-center !justify-center'">
+            Share your artwork 
           </TypoNormalText>
         </Button>
 
@@ -58,8 +58,8 @@
           <IconTopBar title="notifications" />
         </span>
 
-        <router-link class="h-12 w-12 border rounded-full" to="/profile">
-          <img src="/images/profile-picture.svg" />
+        <router-link class="!h-12 !w-12" to="/profile">
+          <img src="/images/profile-picture.svg" class="!h-12 !w-12"/>
         </router-link>
       </div>
     </div>
@@ -69,14 +69,13 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue"; 
 import { useRouter, useRoute } from "vue-router";
+import Button from "../../components/Button/index.vue";
+import TypoNormalText from "../../components/Typo/NormalText.vue";
+import IconLoader from "../../components/IconLoader/index.vue";
 
 export default defineComponent({
-  components: {   },
-  props: { 
-  },
-  
-  name: "",
-
+  components: { TypoNormalText, Button, IconLoader }, 
+   
   setup() { 
     const router = useRouter();
 

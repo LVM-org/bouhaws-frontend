@@ -1,11 +1,12 @@
 <template>
   <router-link
-    :to="`/projects/${project.id}`"
+    :to="`/projects/${project.uuid}`"
     class="flex py-5 px-5 rounded-[10px] flex-row items-center w-full space-x-4 bg-white box-shadow"
-  >
+  > 
     <div class="w-[170px] flex flex-col">
       <ImageLoader
-        :photoUrl="project.image_url"
+        :photoUrl="project.photo_url"
+        type="user"
         :customClass="'h-[160px] w-[170px] rounded-[10px]'"
       />
     </div>
@@ -29,18 +30,18 @@
         </TypoNormalText>
 
         <span class="flex items-center space-x-1">
-          <Avatar :photoUrl="project.user.photo_url" :size="'20'"></Avatar>
+          <Avatar :photoUrl="project?.user?.profile?.photo_url" :size="'20'"></Avatar>
           <TypoNormalText :customClass="'!font-normal'">
-            {{ project.user.name }}
+            {{ project?.user?.name }}
           </TypoNormalText>
         </span>
 
         <TypoNormalText>
-          {{ project.dataPosted }}
+          {{ project.created_at }}
         </TypoNormalText>
 
         <TypoNormalText>
-          {{ project.deadline }}
+          {{ project.end_date }}
         </TypoNormalText>
       </div>
 
@@ -48,7 +49,7 @@
         {{ project.description }}
       </TypoNormalText>
 
-      <div class="flex items-center flex-row space-x-2 w-full">
+      <div v-if="project.milestones" class="flex items-center flex-row space-x-2 w-full">
         <div class="flex flex-row items-center space-x-1 pt-1">
           <template
             v-for="(milestone, index) in project.milestones.total"
@@ -86,8 +87,7 @@ import Avatar from "../../components/Avatar/index.vue";
 export default defineComponent({
   props: {
     project: {
-      type: Object,
-      default: () => {},
+      type: Object, 
     },
   },
 

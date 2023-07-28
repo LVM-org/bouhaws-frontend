@@ -22,9 +22,9 @@ export default defineComponent({
 
     const router = useRouter();
 
-    // onBeforeMount(() => {
-    //   router.push("/home")
-    // })
+    onBeforeMount(() => {
+      router.push("/home")
+    })
 
     return {};
   },

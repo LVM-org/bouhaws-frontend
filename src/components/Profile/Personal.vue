@@ -41,7 +41,7 @@
               :padding="'!py-4'"
             >
               <TypoNormalText
-                :custom-class="'!font-light'"
+                :custom-class="'!font-light !d-flex !justify-center !w-full !items-center'"
                 :color="'text-white'"
               >
                 Save
@@ -58,6 +58,7 @@
 import { defineComponent, ref } from "vue"; 
 import IconLoader from "@/components/IconLoader/index.vue"
 import ImageLoader from "@/components/ImageLoader/index.vue" 
+import FormTextField from "../../components/Form/TextField.vue";
 import FormTextArea from "@/components/Form/TextArea.vue"
 import TypoNormalText from "@/components/Typo/NormalText.vue"
 import TypoHeaderText from "@/components/Typo/HeaderText.vue"
@@ -72,7 +73,8 @@ export default defineComponent({
     Button,
     Avatar,
     ImageLoader, 
-    FormTextArea
+    FormTextArea,
+    FormTextField
   }, 
 
   props: { 

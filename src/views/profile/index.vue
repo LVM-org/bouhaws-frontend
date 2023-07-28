@@ -1,7 +1,6 @@
 <template>
   <subpage-layout>
-    <div class="flex space-x-6 sticky top-[60%]">
-      wewewe
+    <div class="flex space-x-6 sticky top-[60%]"> 
       <div
         class="rounded-[10px] space-y-1 flex flex-col box-shadow px-6 py-6 !w-[360px] h-fit bg-white"
       >

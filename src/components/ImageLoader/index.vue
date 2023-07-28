@@ -5,7 +5,7 @@
     :style="` background-size: cover;
       background-repeat: no-repeat;
       background-position: center; ${
-        imageUrl ? `background-image:url(${imageUrl});` : ''
+        imageUrl ? `background-image:url(${imageUrl});` : `background-image:url(${type == 'not-user-image' ? defaultImage : defaultUserImage});`
       }  ${customStyle}`"
   >
     <slot />
@@ -33,8 +33,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    type: {
+      type: String,
+      default: "not-user-image"
+    }
   },
   setup(props) {
+    const defaultImage =  ref("/images/default-image.png")
+    const defaultUserImage =  ref("/images/default-user.png")
     const image = ref("");
     const imageUrl = ref("");
 
@@ -65,6 +71,8 @@ export default defineComponent({
     return {
       image,
       imageUrl,
+      defaultImage,
+      defaultUserImage
     };
   },
 });

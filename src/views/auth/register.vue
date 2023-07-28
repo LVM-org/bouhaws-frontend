@@ -1,5 +1,7 @@
 <template>
   <auth-layout>
+      <FullscreenLoading :loading="isLoading"/> 
+
     <div class="flex flex-col space-y-5 mx-auto py-8 max-w-xl w-3/5">
       <div class="space-y-2 text-green-500">
         <div class="-ml-8 flex items-center space-x-2">
@@ -112,6 +114,7 @@
             type="submit"
             customClass="!bg-bouhaws-blue-main !w-full text-white w-full !rounded-[7px]"
             :useSlot="true"
+            :loading="loading"
             :padding="'!py-4'"
             @click="register()"
           >
@@ -140,6 +143,7 @@ import TypoNormalText from "../../components/Typo/NormalText.vue";
 import TypoHeaderText from "../../components/Typo/HeaderText.vue";
 import Button from "../../components/Button/index.vue";
 import Avatar from "../../components/Avatar/index.vue";
+import FullscreenLoading  from "@/components/FullscreenLoading/index.vue";
 import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
@@ -151,7 +155,7 @@ export default defineComponent({
     Avatar,
     ImageLoader,
     FormTextField,
-    FormSelect,
+    FormSelect, FullscreenLoading
   },
   middlewares: {
     fetchRules: [],
@@ -175,10 +179,11 @@ export default defineComponent({
       student_name: "",
       year_of_enrollment: "",
     });
-
+    const isLoading = ref(false)
     const isReadyToRegister = ref(false);
 
     const register = () => {
+      isLoading.value = true
       if (payload.username && payload.email && payload.password) {
         Logic.Auth.SignUpPayload = {
           email: payload.email,
@@ -186,10 +191,11 @@ export default defineComponent({
           username: payload.username,
         };
         Logic.Auth.SignUp(true);
+        isLoading.value = false  
       }
     };
 
-    return { isReadyToRegister, register, studentDetails, payload, router };
+    return { isReadyToRegister, register, studentDetails, payload, router, isLoading };
   },
 });
 </script>

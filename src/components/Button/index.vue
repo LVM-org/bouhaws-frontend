@@ -1,11 +1,15 @@
 <template>
   <button
-    :class="`flex items-center space-x-4 text-white  text-sm font-semibold ${padding} ${customClass} rounded-[7px] focus:outline-none`"
+    :class="`flex items-center space-x-4 text-white  text-sm font-semibold !d-flex !justify-center !w-full !items-center ${padding} ${customClass} rounded-[7px] focus:outline-none`"
     :disabled="disabled"
     @click="clickBtn"
-  >
+  > 
     <template v-if="!useSlot">
-      <!-- <IconSpinner v-if="loading" class="animate-spin" /> -->
+      <IconSpinner
+        v-if="loading" 
+        name="arrow-back-blue"
+        class="animate-spin" 
+      />
 
       <span :style="{ fontSize: fontSize }">
         {{ loading ? "" : text }}
@@ -13,13 +17,22 @@
     </template>
 
     <template v-else>
-      <slot />
+      <IconLoader
+        v-if="loading" 
+        name="spinner"
+        class="animate-spin" 
+      />
+
+      <div v-else class="!flex !justify-center !items-center"> 
+        <slot />
+      </div>
     </template>
   </button>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from "vue"; 
+import IconLoader from '@/components/IconLoader/index.vue';
 
 export default defineComponent({
   props: { 
@@ -68,7 +81,7 @@ export default defineComponent({
       default: "py-4 px-6",
     },
   },
-  components: {},
+  components: {IconLoader},
   name: "ButtonComponent", 
 
   setup(_, { emit }) { 

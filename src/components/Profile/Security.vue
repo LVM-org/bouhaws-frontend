@@ -33,7 +33,7 @@
             :useSlot="true"
             :padding="'!py-4'"
           >
-            <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+            <TypoNormalText :custom-class="'!font-light !d-flex !justify-center !w-full !items-center'" :color="'text-white'">
               Save
             </TypoNormalText>
           </Button>
@@ -44,14 +44,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue"; 
+import { defineComponent, ref, reactive } from "vue"; 
 import IconLoader from "@/components/IconLoader/index.vue"
 import ImageLoader from "@/components/ImageLoader/index.vue" 
-import FormTextArea from "@/components/Form/TextArea.vue"
+import FormTextField from "@/components/Form/TextField.vue"
 import TypoNormalText from "@/components/Typo/NormalText.vue"
 import TypoHeaderText from "@/components/Typo/HeaderText.vue"
 import Button from "@/components/Button/index.vue";
 import Avatar from "@/components/Avatar/index.vue"; 
+import { Logic } from "bouhaws-frontend-logic";
 
 export default defineComponent({
   components: {
@@ -61,24 +62,29 @@ export default defineComponent({
     Button,
     Avatar,
     ImageLoader, 
-    FormTextArea
-  }, 
-  props: { 
-  },
-  
-  name: "",
+    FormTextField
+  },  
 
   setup() { 
+    const loading = ref(false)
 
-const payload = ref({
-  current_password: "",
-  new_password: "",
-  confirm_new_password: "",
-});
+    const payload = reactive({
+      current_password: "",
+      new_password: "",
+      confirm_new_password: "",
+    });
 
-const updatePassword = () => {
-  console.log(payload.value);
-};
+    const updatePassword = () => {
+    loading.value = true 
+    // if (payload.current_password && payload.new_password && payload.confirm_new_password) {
+    //   Logic.Auth.UpdatePasswordPayload = { 
+    //     old_password: payload.current_password,
+    //     password: payload.new_password
+    //   };
+    //   Logic.Auth.UpdatePassword(true);
+    //   loading.value = false
+    // }
+    };
     return { payload, updatePassword };
   },
 });
